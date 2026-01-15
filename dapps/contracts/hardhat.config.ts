@@ -1,7 +1,9 @@
 import { task, type HardhatUserConfig } from "hardhat/config";
 import "@nomicfoundation/hardhat-toolbox-viem";
-import { USER_PRIVATE_KEY } from "./helpers/constants/deployments";
+import "dotenv/config";
+// import { USER_PRIVATE_KEY } from "./helpers/constants/deployment";
 
+const PRIVATE_KEY = process.env.PRIVATE_KEY as `0x${string}`;
 const config: HardhatUserConfig = {
   solidity: {
     version: "0.8.27",
@@ -17,7 +19,7 @@ const config: HardhatUserConfig = {
     avalancheFuji: {
       url: "https://api.avax-test.network/ext/bc/C/rpc",
       chainId: 43113,
-      accounts: [USER_PRIVATE_KEY],
+      accounts: [PRIVATE_KEY],
     },
   },
   etherscan: {
